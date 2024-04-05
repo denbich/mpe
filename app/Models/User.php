@@ -17,9 +17,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
+        'firstname',
+        'lastname',
+        'telephone',
+        'role',
     ];
 
     /**
@@ -40,8 +45,17 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'firstname' => 'string',
+            'lastname' => 'string',
+            'telephone' => 'string',
+            'role' => 'string',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+
+    public function Citizen(){
+        return $this->hasMany(Citizen::class);
     }
 }
