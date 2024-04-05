@@ -11,10 +11,19 @@ class Citizen extends Model
 
     protected $fillable = [
         'home_adress',
-        'points',
+        'title',
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function citizen_history_points() {
+    return $this->hasMany(Citizen_history_points::class);
+    }
+
+    public function citizencup() {
+         return $this->hasMany(Citizencup::class);
+    }
+
 }
